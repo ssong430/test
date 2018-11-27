@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="businessman">
+
+<delete id="delete" parameterType="String">
+
+delete from businessman where businessID =#{businessID}
+
+</delete>
+
+
+<update id="update" parameterType="BusinessManDTO">
+
+update businessman set b_address1 = #{b_address1}, b_address2 = #{b_address2},
+b_phone = #{b_phone},b_email = #{b_email}
+
+</update>
+
+<insert id="create" parameterType="BusinessManDTO">
+
+insert into businessman(businessID,b_passwd,b_name,b_sex,b_address1,
+			b_address2,b_phone,b_email,b_regdate)
+			
+Values (#{businessID},#{b_passwd},#{b_name},#{b_sex},#{b_address1},
+			#{b_address2},#{b_phone},#{b_email},sysdate)
+
+</insert>
+
+<select id="read" parameterType="String" resultType="BusinessManDTO">
+select * from businessman 
+where 
+businessID = #{businessID} 
+</select>
+
+</mapper>
